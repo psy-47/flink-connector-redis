@@ -73,8 +73,7 @@ public class RedisDynamicTableFactory
 
     @Override
     public Set<ConfigOption<?>> requiredOptions() {
-        final Set<ConfigOption<?>> options = new HashSet<>();
-        return options;
+        return new HashSet<>();
     }
 
     @Override
