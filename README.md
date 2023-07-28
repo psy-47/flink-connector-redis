@@ -28,7 +28,7 @@
 
 
 
-### 使用方法: 
+### 使用方法:
 1.打包命令： mvn package -DskipTests</br>
 2.将生成的包放入flink lib中即可，无需其它设置。
 
@@ -137,6 +137,11 @@ create table sink_redis(name VARCHAR, subject VARCHAR, score VARCHAR)  with ('co
 
 ### 使用示例:
 - ##### 维表查询：
+| command      | 维表关联条件                                                 |
+| ------------ | ---------------------------------------------------------- |
+| GET          | 只能用 key 作为关联字段，即表定义中第1个字段                    |
+| HGET         | 必须用 key 和 field 作为关联字段，即表定义中第1、2个字段         |
+
 ```
 create table sink_redis(name varchar, level varchar, age varchar) with ( 'connector'='redis', 'host'='10.11.80.147','port'='7001', 'redis-mode'='single','password'='******','command'='hset');
 
@@ -167,6 +172,12 @@ left join dim_table for system_time as of s.proctime as d on
 
 - #### 多字段的维表关联查询
 很多情况维表有多个字段,本实例展示如何利用'value.data.structure'='row'写多字段并关联查询。
+
+| command      | 维表关联条件                                                 |
+| ------------ | ---------------------------------------------------------- |
+| GET          | 只能用 key 作为关联字段，即表定义中第1个字段                    |
+| HGET         | 必须用 key 和 field 作为关联字段，即表定义中第1、2个字段         |
+
 ```
 -- 创建表
 create table sink_redis(uid VARCHAR,score double,score2 double )
@@ -276,7 +287,7 @@ tableResult.getJobClient().get()
 
 ### 开发与测试环境
 
-ide: IntelliJ IDEA 
+ide: IntelliJ IDEA
 
 code format: google-java-format + Save Actions
 
