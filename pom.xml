@@ -97,24 +97,23 @@ under the License.
             <version>${flink.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!-- flink-table-planner-blink 仅在1.13及以下版本提供，1.14开始变更为 flink-table-planner -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.flink</groupId>-->
+<!--            <artifactId>flink-table-planner-blink_${scala.binary.version}</artifactId>-->
+<!--            <version>${flink.version}</version>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-table-planner-blink_${scala.binary.version}</artifactId>
-            <version>${flink.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
+            <artifactId>${flink-streaming-java.artifactId}</artifactId>
             <version>${flink.version}</version>
             <scope>test</scope>
             <type>test-jar</type>
         </dependency>
-
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-test-utils_${scala.binary.version}</artifactId>
+            <artifactId>${flink-test-utils.artifactId}</artifactId>
             <version>${flink.version}</version>
             <scope>test</scope>
             <exclusions>
@@ -124,6 +123,7 @@ under the License.
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -145,7 +145,6 @@ under the License.
             <artifactId>netty-transport-native-epoll</artifactId>
             <version>4.1.95.Final</version>
         </dependency>
-
 
     </dependencies>
 
@@ -276,6 +275,11 @@ under the License.
             <properties>
                 <flink.bundle.version>1.13</flink.bundle.version>
                 <flink.version>1.13.1</flink.version>
+                <flink-table-planner.artifactId>flink-table-planner_${scala.binary.version}
+                </flink-table-planner.artifactId>
+                <flink-streaming-java.artifactId>flink-streaming-java_${scala.binary.version}
+                </flink-streaming-java.artifactId>
+                <flink-test-utils.artifactId>flink-test-utils_${scala.binary.version}</flink-test-utils.artifactId>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -285,15 +289,34 @@ under the License.
             <id>flink1.14</id>
             <properties>
                 <flink.bundle.version>1.14</flink.bundle.version>
-                <flink.version>1.14.4</flink.version>
+                <flink.version>1.14.6</flink.version>
+                <flink-table-planner.artifactId>flink-table-planner_${scala.binary.version}
+                </flink-table-planner.artifactId>
+                <flink-streaming-java.artifactId>flink-streaming-java_${scala.binary.version}
+                </flink-streaming-java.artifactId>
+                <flink-test-utils.artifactId>flink-test-utils_${scala.binary.version}</flink-test-utils.artifactId>
             </properties>
         </profile>
         <profile>
             <id>flink1.15</id>
             <properties>
                 <flink.bundle.version>1.15</flink.bundle.version>
-                <flink.version>1.15.1</flink.version>
+                <flink.version>1.15.4</flink.version>
+                <flink-table-planner.artifactId>flink-table-planner_2.12</flink-table-planner.artifactId>
+                <flink-streaming-java.artifactId>flink-streaming-java</flink-streaming-java.artifactId>
+                <flink-test-utils.artifactId>flink-test-utils</flink-test-utils.artifactId>
+            </properties>
+        </profile>
+        <profile>
+            <id>flink1.16</id>
+            <properties>
+                <flink.bundle.version>1.16</flink.bundle.version>
+                <flink.version>1.16.2</flink.version>
+                <flink-table-planner.artifactId>flink-table-planner_2.12</flink-table-planner.artifactId>
+                <flink-streaming-java.artifactId>flink-streaming-java</flink-streaming-java.artifactId>
+                <flink-test-utils.artifactId>flink-test-utils</flink-test-utils.artifactId>
             </properties>
         </profile>
     </profiles>
+
 </project>
